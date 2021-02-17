@@ -14,12 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Has iniciado Sesion') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-@extends('layouts.footer')
