@@ -48,10 +48,15 @@
                                 </li>
                             @endif
                         @else
-                                
+                            
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('shipments.index') }}">
+                                    Despachos
+                                </a>
+                            </li>
 
-                                <a class="nav-link" href="/clientes">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customers.index') }}">
                                     Clientes
                                 </a>
 
@@ -94,13 +99,19 @@
         <div class="container">
             <div class="row">
                 <div class="py-4 mt-5 col-md-12">
-                    @yield('botones')
+                    @yield('buttons')
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
                     @yield('content')
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @yield('pagination')
                 </div>
             </div>
             

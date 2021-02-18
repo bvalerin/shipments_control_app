@@ -19,12 +19,8 @@ class CustomerController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
-        
-        $customers = DB::table('customers')->get();
-        
-
-        return view('customer.index')->with('customers', $customers);
+        $customers = Customer::paginate(2);
+        return view('customer.index', compact('customers'));
     }
 
     /**
@@ -43,13 +39,14 @@ class CustomerController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-
         $data = $request->validate(
             [
                 'name' => 'required|min:3',
                 'email' => 'required|email',
                 'phone' => 'required|min:8',
                 'address' => 'required',
+                'contact_name' => 'nullable',
+                'contact_phone' => 'nullable',
             ],
             [
                 'name.required'=> 'El nombre es requerido',
@@ -61,14 +58,8 @@ class CustomerController extends Controller{
                 'address.required'=> 'La direccion es requerida'
             ]
         );
-
-        DB::table('customers')->insert([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone']
-        ]);
-
-        return redirect()->route('customer.index');
+        Customer::insert($data);
+        return redirect()->route('customers.index');
     }
 
     /**

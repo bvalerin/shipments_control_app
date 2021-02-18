@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('botones')
-    <a  href="{{ route("customer.index") }}"class="btn btn-primary">Regresar</a>
+@section('buttons')
+    <a  href="{{ route("customers.index") }}"class="btn btn-primary">Regresar</a>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <form class="form-group" action="{{ route("customer.store") }}" method="post" novalidate>
+            <form class="form-group" action="{{ route("customers.store") }}" method="post" novalidate>
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -22,9 +22,7 @@
                         type="text" 
                         name="name" 
                         placeholder="Nombre de cliente"
-                        value="{{ old('name') }}"
-                        >
-
+                        value="{{ old('name') }}">
                         @error('name')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -67,6 +65,29 @@
                             </span>
                         @enderror
                     </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-8">
+                        <label for="contact_name">Encargado</label>
+                        <input class="form-control @error('contact_name') is-invalid @enderror" id="contact_name" type="text" name="contact_name" placeholder="Encargado" >
+                        @error('contact_name')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="contact_phone">Telefono Encargado</label>
+                        <input class="form-control @error('contact_phone') is-invalid @enderror" id="contact_phone" type="text" name="contact_phone" placeholder="Telefono de encargado" >
+                        @error('contact')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
                 </div>
 
 
