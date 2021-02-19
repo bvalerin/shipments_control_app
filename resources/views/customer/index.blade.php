@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('msj')
+    @if (session('msj'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ session('msj') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+@endsection
+
 @section('buttons')
     <a href=" {{ route('customers.create') }} " class="btn btn-primary">Crear Cliente</a>
 @endsection
@@ -24,7 +35,7 @@
                             <td>{{ $cus->phone }}</td>
                             <td>{{ $cus->email }}</td>
                             <td class="text-center">
-                                <a href=" {{ route('customers.edit', ['customer' => $cus->id]) }} " class="btn btn-inline btn-primary">Editar</a>
+                                <a href="{{ route('customers.edit', ['customer' => $cus->id]) }}" class="btn btn-inline btn-primary">Editar</a>
                                 <a href="" class="btn btn-inline btn-danger">Borrar</a>
                             </td>
                         </tr>

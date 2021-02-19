@@ -97,8 +97,15 @@
         </nav>
 
         <div class="container">
+
             <div class="row">
-                <div class="py-4 mt-5 col-md-12">
+                <div class="mt-3 col-md-12">
+                    @yield('msj')
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mt-1 col-md-12">
                     @yield('buttons')
                 </div>
             </div>

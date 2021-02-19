@@ -19,7 +19,7 @@ class CustomerController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $customers = Customer::paginate(2);
+        $customers = Customer::paginate(5);
         return view('customer.index', compact('customers'));
     }
 
@@ -39,27 +39,9 @@ class CustomerController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $data = $request->validate(
-            [
-                'name' => 'required|min:3',
-                'email' => 'required|email',
-                'phone' => 'required|min:8',
-                'address' => 'required',
-                'contact_name' => 'nullable',
-                'contact_phone' => 'nullable',
-            ],
-            [
-                'name.required'=> 'El nombre es requerido',
-                'name.min'=> 'El nombre debe tener minimo 3 caracteres', 
-                'email.required'=> 'El correo es requerido',
-                'email.email' => 'El correo digitado es invalido',
-                'phone.required'=> 'El telephone es requerido',
-                'phone.min'=> 'El telefono debe tener minimo 8 caracteres',
-                'address.required'=> 'La direccion es requerida'
-            ]
-        );
+        $data = Customer::validated($request);
         Customer::insert($data);
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('msj', 'Cliente '. $data['name'] . ' se creo con exito.');
     }
 
     /**
@@ -92,33 +74,16 @@ class CustomerController extends Controller{
 
      
     public function update(Request $request, Customer $customer){
-        $data = $request->validate(
-            [
-                'name' => 'required|min:3',
-                'email' => 'required|email',
-                'phone' => 'required|min:8',
-                'address' => 'required',
-                'contact_name' => 'nullable',
-                'contact_phone' => 'nullable',
-            ],
-            [
-                'name.required'=> 'El nombre es requerido',
-                'name.min'=> 'El nombre debe tener minimo 3 caracteres', 
-                'email.required'=> 'El correo es requerido',
-                'email.email' => 'El correo digitado es invalido',
-                'phone.required'=> 'El telephone es requerido',
-                'phone.min'=> 'El telefono debe tener minimo 8 caracteres',
-                'address.required'=> 'La direccion es requerida'
-            ]
-        );
-
+        $data = Customer::validated($request);
         $customer->name = $data['name'];
-
-
-
-
-
-
+        $customer->dni = $data['dni'];
+        $customer->email = $data['email'];
+        $customer->phone = $data['phone'];
+        $customer->address = $data['address'];
+        $customer->contact_name = $data['contact_name'];
+        $customer->contact_phone = $data['contact_phone'];
+        $customer->save();
+        return redirect()->route('customers.index')->with('msj', 'Datos de '. $customer->name . ' actualizaron con exito.');
     }
 
     /**
@@ -127,8 +92,15 @@ class CustomerController extends Controller{
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
-    {
+    public function destroy(Customer $customer){
         //
     }
+
+
+
+
+
+    #############################PRIVATE FUNCTIONS#################################
+
+
 }

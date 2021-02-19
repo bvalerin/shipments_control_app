@@ -32,13 +32,20 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="email">Correo</label>
-                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ $customer->email }}" placeholder="Correo de cliente" > 
-                        @error('email')
+                        <label for="name">Cédula</label>
+                        <input 
+                        class="form-control @error('dni') is-invalid @enderror" 
+                        id="name" 
+                        type="text" 
+                        name="dni" 
+                        placeholder="Cédula de cliente"
+                        value="{{ old('dni') }}">
+                        @error('dni')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
                             </span>
                         @enderror
+
                     </div>
 
 
@@ -56,7 +63,19 @@
                 </div>
 
                 <div class="row mt-2">
-                    <div class="col-md-12">
+
+                    <div class="col-md-4">
+                        <label for="email">Correo</label>
+                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ $customer->email }}" placeholder="Correo de cliente" > 
+                        @error('email')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+
+                    <div class="col-md-8">
                         <label for="phone">Dirección</label>
                         <input value="{{ $customer->address }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de cliente" >
                         @error('address')
@@ -65,6 +84,8 @@
                             </span>
                         @enderror
                     </div>
+
+
                 </div>
 
                 <div class="row mt-2">

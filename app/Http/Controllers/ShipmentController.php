@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 
@@ -26,9 +27,9 @@ class ShipmentController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+        $customers = Customer::all();
+        return view('shipments.create',compact('customers'));
     }
 
     /**
@@ -37,9 +38,8 @@ class ShipmentController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        
     }
 
     /**
