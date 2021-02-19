@@ -22,6 +22,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/clientes/crear', [App\Http\Controllers\CustomerController::class, 'create'])->name('customers.create');
 Route::post('/clientes', [App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
+Route::get('/clientes/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
+Route::get('/clientes/{customer}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
+
+
 
 #Shipments routes
 Route::get('/despachos', [App\Http\Controllers\ShipmentController::class, 'index'])->name('shipments.index');

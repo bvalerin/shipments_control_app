@@ -24,7 +24,7 @@
                             <td>{{ $cus->phone }}</td>
                             <td>{{ $cus->email }}</td>
                             <td class="text-center">
-                                <a href="" class="btn btn-inline btn-primary">Editar</a>
+                                <a href=" {{ route('customers.edit', ['customer' => $cus->id]) }} " class="btn btn-inline btn-primary">Editar</a>
                                 <a href="" class="btn btn-inline btn-danger">Borrar</a>
                             </td>
                         </tr>
