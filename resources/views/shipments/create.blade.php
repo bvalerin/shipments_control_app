@@ -13,6 +13,18 @@
 
             <form class="form-group" action="{{ route("customers.store") }}" method="post" novalidate>
                 @csrf
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" list="customers_list" placeholder="Cliente" />
+                        <datalist id="customers_list">
+                            @foreach($customers as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @endforeach
+                        </datalist>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-4">
                         <label for="name">Nombre</label>
