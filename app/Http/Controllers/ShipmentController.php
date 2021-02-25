@@ -19,7 +19,7 @@ class ShipmentController extends Controller{
      */
     public function index(){
         $shipments = Shipment::paginate(1);
-        return view('shipments.index', compact('shipments'));
+        return view('shipment.index', compact('shipments'));
     }
 
     /**

@@ -13,6 +13,7 @@ class CreateShipmentsTable extends Migration{
             $table->string('destination');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('customer_id')->references('id')->on('customers');
+            $table->foreignId('driver_id')->references('id')->on('drivers');
             $table->dateTime('shipment_date', $precision = 0);
             $table->string('instructions');
             $table->string('container_number');

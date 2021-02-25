@@ -54,6 +54,7 @@
                                     Despachos
                                 </a>
                             </li>
+                            
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('customers.index') }}">
@@ -71,6 +72,12 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('drivers.index') }}">
+                                    Choferes
+                                </a>
                             </li>
 
                             <li class="nav-item dropdown">
