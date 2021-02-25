@@ -24,7 +24,7 @@ Route::get('/clientes/crear', [App\Http\Controllers\CustomerController::class, '
 Route::post('/clientes', [App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 Route::get('/clientes/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/clientes/{customer}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
-
+Route::get('/clientes/{customer}/json', [App\Http\Controllers\CustomerController::class, 'get_customer_json'])->name('customers.get_customer_json');
 
 
 #Shipments routes

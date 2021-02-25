@@ -79,6 +79,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('register') }}"> {{ __('Nuevo Usuario') }} </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -128,4 +130,17 @@
 
     </div>
 </body>
+
+
+@yield('scripts')
+
+<script>
+   const base_path =  "{{ env("APP_URL") }}";
+</script>
+
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/shipments.js') }}"></script>
+<script src="{{ asset('js/customers.js') }}"></script>
+
+
 </html>
