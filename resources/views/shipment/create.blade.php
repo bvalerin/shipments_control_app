@@ -13,8 +13,6 @@
 
             <form class="form-group" action="{{ route("customers.store") }}" method="post" novalidate>
                 @csrf
-
-                <h3>Datos de cliente</h3>
                 <div class="row">
                     <div class="col-md-12">
                         <label>Seleccione un cliente</label>

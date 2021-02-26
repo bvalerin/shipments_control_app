@@ -41,15 +41,15 @@ class DriverController extends Controller{
         return view('driver.edit', compact('driver'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Driver  $driver
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Driver $driver){
-
+        $data = Driver::validated($request);
+        $driver->name = $data['name'];
+        $driver->dni = $data['dni'];
+        $driver->email = $data['email'];
+        $driver->phone = $data['phone'];
+        $driver->address = $data['address'];
+        $driver->save();
+        return redirect()->route('drivers.index')->with('msj', 'Datos de '. $driver->name . ' actualizaron con exito.');
     }
 
     /**

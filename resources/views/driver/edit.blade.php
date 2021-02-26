@@ -10,7 +10,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form class="form-group" {{ route("drivers.update", ['driver' => $driver->id]) }} method="post" novalidate>
+            <form class="form-group" action="{{ route("drivers.update", ['driver' => $driver->id]) }}" method="post" novalidate>
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -21,7 +21,7 @@
                         type="text" 
                         name="name" 
                         placeholder="Nombre de chofer"
-                        value="{{ old('name') }}">
+                        value="{{ $driver->name }}">
                         @error('name')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -38,7 +38,7 @@
                         type="text" 
                         name="dni" 
                         placeholder="Cédula de chofer"
-                        value="{{ old('dni') }}">
+                        value="{{ $driver->dni }}">
                         @error('dni')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -50,7 +50,7 @@
 
                     <div class="col-md-4">
                         <label for="phone">Telefono</label>
-                        <input class="form-control @error('phone') is-invalid @enderror" id="phone" type="text" value="{{ old('phone') }}"name="phone" placeholder="Telefono de chofer" >
+                        <input class="form-control @error('phone') is-invalid @enderror" id="phone" type="text" value="{{ $driver->phone }}"name="phone" placeholder="Telefono de chofer" >
                         @error('phone')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -65,7 +65,7 @@
 
                     <div class="col-md-4">
                         <label for="email">Correo</label>
-                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ old('email') }}" placeholder="Correo de chofer" > 
+                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ $driver->email }}" placeholder="Correo de chofer" > 
                         @error('email')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -76,7 +76,7 @@
 
                     <div class="col-md-8">
                         <label for="phone">Dirección</label>
-                        <input value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de chofer" >
+                        <input value="{{ $driver->phone }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de chofer" >
                         @error('address')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
