@@ -31,7 +31,7 @@ Route::get('/choferes', [App\Http\Controllers\DriverController::class, 'index'])
 Route::get('/choferes/crear', [App\Http\Controllers\DriverController::class, 'create'])->name('drivers.create');
 Route::post('/choferes', [App\Http\Controllers\DriverController::class, 'store'])->name('drivers.store');
 Route::get('/choferes/{driver}/edit', [App\Http\Controllers\DriverController::class, 'edit'])->name('drivers.edit');
-Route::get('/choferes/{driver}', [App\Http\Controllers\DriverController::class, 'update'])->name('drivers.update');
+Route::post('/choferes/{driver}', [App\Http\Controllers\DriverController::class, 'update'])->name('drivers.update');
 Route::get('/choferes/{driver}/json', [App\Http\Controllers\DriverController::class, 'get_driver_json'])->name('drivers.get_driver_json');
 
 

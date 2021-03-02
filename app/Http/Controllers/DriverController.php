@@ -40,6 +40,7 @@ class DriverController extends Controller{
         $driver->email = $data['email'];
         $driver->phone = $data['phone'];
         $driver->address = $data['address'];
+<<<<<<< HEAD
         $driver->vehicle_plate = $data['vehicle_plate'];
         $driver->vehicle_axle = $data['vehicle_axle'];
         $driver->save();
@@ -48,6 +49,10 @@ class DriverController extends Controller{
 
     public function destroy(Driver $driver){
         
+=======
+        $driver->save();
+        return redirect()->route('drivers.index')->with('msj', 'Datos de '. $driver->name . ' actualizaron con exito.');
+>>>>>>> 284f641f9fa095a7d9fb2d5c712da22be9524ee9
     }
 
     public function get_driver_json(Driver $driver){

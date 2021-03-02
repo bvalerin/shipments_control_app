@@ -12,33 +12,17 @@ class ShipmentController extends Controller{
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(){
         $shipments = Shipment::paginate(1);
         return view('shipment.index', compact('shipments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(){
         $customers = Customer::all();
         $drivers = Driver::all();
         return view('shipment.create',compact('customers','drivers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
         
     }
