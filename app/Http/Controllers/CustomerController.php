@@ -53,6 +53,7 @@ class CustomerController extends Controller{
     }
 
     public function get_customer_json(Customer $customer){
+        // return json_encode(csrf_token());
         return json_encode($customer);
     }
 

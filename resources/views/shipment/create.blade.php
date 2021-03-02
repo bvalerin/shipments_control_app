@@ -13,10 +13,9 @@
 
             <form class="form-group" action="{{ route("customers.store") }}" method="post" novalidate>
                 @csrf
-
-                <h3>Datos de cliente</h3>
+                <h3 id="h3_customer">Cliente: </h3>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <label>Seleccione un cliente</label>
                         <input type="text" class="form-control" id="input_search_customer" list="customers_list" placeholder="Cliente" />
                         <datalist id="customers_list">
@@ -25,10 +24,21 @@
                             @endforeach
                         </datalist>
                     </div>
+
+                    <div class="col-md-4">
+                        <label for="phone">Fecha Colocacion</label>
+                        <input class="form-control @error('shipment_date') is-invalid @enderror" id="shipment_date" type="date" name="shipment_date" >
+                        @error('shipment_date')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
                 </div>
 
                 <div class="mt-2 row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="name">Origen</label>
                         <input
                         class="form-control @error('origin') is-invalid @enderror" 
@@ -44,7 +54,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="email">Destino</label>
                         <input class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" > 
                         @error('destination')
@@ -54,32 +64,9 @@
                         @enderror
                     </div>
 
-
-                    <div class="col-md-4">
-                        <label for="phone">Telefono</label>
-                        <input class="form-control @error('phone') is-invalid @enderror" id="phone" type="text" name="phone" placeholder="Telefono de cliente" >
-                        @error('phone')
-                            <span class="invalid-feedback d-block"  role="alert">
-                                <strong> {{ $message }} </strong>
-                            </span>
-                        @enderror
-                    </div>
-
-
                 </div>
 
-                <div class="row mt-2">
-                    <div class="col-md-4">
-                        <label for="phone">Fecha Colocacion</label>
-                        <input class="form-control @error('shipment_date') is-invalid @enderror" id="shipment_date" type="date" name="shipment_date" >
-                        @error('shipment_date')
-                            <span class="invalid-feedback d-block"  role="alert">
-                                <strong> {{ $message }} </strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
+                <hr>
                 <h3>Datos de equipo a usar</h3>
                 <div class="row">
                     <div class="col-md-4">
@@ -113,45 +100,22 @@
                     </div>
                 </div>
 
-                <h3>Datos de conductor</h3>
+                <hr>
+
+
+                <h3 id="h3_driver">Chofer: </h3>
                 <div class="row">
-                    <div class="col-md-4">
-                        <label>Numero de placa</label>
-                        <input name="vehicle_plate" id="vehicle_plate" placeholder="Numero de placa" class="form-control" />
-                        @error('vehicle_plate')
-                        <span class="invalid-feedback d-block"  role="alert">
-                            <strong> {{ $message }} </strong>
-                        </span>
-                        @enderror
+
+                    <div class="col-md-12">
+                        <label>Seleccione un Chofer</label>
+                        <input type="text" class="form-control" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
+                        <datalist id="drivers_list">
+                            @foreach($drivers as $driver)
+                                <option value="{{ $driver->id }}">{{ $driver->name }}</option>
+                            @endforeach
+                        </datalist>
                     </div>
 
-                    <div class="col-md-4">
-                        <label>Tamaño</label>
-                        <input name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
-                        @error('chasis_number')
-                        <span class="invalid-feedback d-block"  role="alert">
-                            <strong> {{ $message }} </strong>
-                        </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-md-4">
-                        <label>Numero de ejes</label>
-                        
-                        <select class="form-control" name="vehicle_axle" id="vehicle_axle">
-                            <option value="2">2 ejes</option>
-                            <option value="3">3 ejes</option>
-                            <option value="4">4 ejes</option>
-                            <option value="5">5 ejes</option>
-                            <option value="6">6 ejes</option>
-                        </select>
-
-                        @error('container_number')
-                        <span class="invalid-feedback d-block"  role="alert">
-                            <strong> {{ $message }} </strong>
-                        </span>
-                        @enderror
-                    </div>
                 </div>
 
                 <div class="row">

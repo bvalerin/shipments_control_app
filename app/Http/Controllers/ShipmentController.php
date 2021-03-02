@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Driver;
 use App\Models\Customer;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 
 class ShipmentController extends Controller{
-
     function __construct(){
         $this->middleware('auth');
     }
@@ -29,7 +29,8 @@ class ShipmentController extends Controller{
      */
     public function create(){
         $customers = Customer::all();
-        return view('shipments.create',compact('customers'));
+        $drivers = Driver::all();
+        return view('shipment.create',compact('customers','drivers'));
     }
 
     /**

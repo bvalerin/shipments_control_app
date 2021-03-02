@@ -26,40 +26,33 @@ class DriverController extends Controller{
         return redirect()->route('drivers.index')->with('msj', 'Chofer '. $data['name'] . ' se creo con exito.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Driver  $driver
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Driver $driver)
-    {
-        //
+    public function show(Driver $driver){
     }
 
     public function edit(Driver $driver){
         return view('driver.edit', compact('driver'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Driver  $driver
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Driver $driver){
-
+        $data = Driver::validated($request);
+        $driver->name = $data['name'];
+        $driver->dni = $data['dni'];
+        $driver->email = $data['email'];
+        $driver->phone = $data['phone'];
+        $driver->address = $data['address'];
+        $driver->vehicle_plate = $data['vehicle_plate'];
+        $driver->vehicle_axle = $data['vehicle_axle'];
+        $driver->save();
+        return redirect()->route('drivers.index')->with('msj', 'Datos de '. $driver->name . ' actualizaron con exito.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Driver  $driver
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Driver $driver)
-    {
-        //
+    public function destroy(Driver $driver){
+        
     }
+
+    public function get_driver_json(Driver $driver){
+        return json_encode($driver);
+    }
+
+    
 }

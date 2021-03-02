@@ -15,8 +15,8 @@ class Driver extends Model{
         'email',
         'phone',
         'address',
-        'contact_name',
-        'contact_phone',
+        'vehicle_plate',
+        'vehicle_axle',
         'created_at',
         'updated_at'
     ];
@@ -29,8 +29,8 @@ class Driver extends Model{
                 'phone' => 'min:8|nullable',
                 'address' => 'nullable',
                 'dni' => 'nullable',
-                'contact_name' => 'nullable',
-                'contact_phone' => 'nullable',
+                'vehicle_plate' => 'nullable',
+                'vehicle_axle' => 'nullable',
             ],
             [
                 'name.required'=> 'El nombre es requerido',

@@ -14,7 +14,8 @@ class CreateDriversTable extends Migration{
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('vechicle_plate')->nullable();
+            $table->string('vehicle_plate')->nullable();
+            $table->string('vehicle_axle')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

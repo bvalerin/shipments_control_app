@@ -10,7 +10,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form class="form-group" {{ route("drivers.update", ['driver' => $driver->id]) }} method="post" novalidate>
+            <form class="form-group" action="{{ route("drivers.update", ['driver' => $driver->id]) }}" method="PUT" novalidate>
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -21,7 +21,7 @@
                         type="text" 
                         name="name" 
                         placeholder="Nombre de chofer"
-                        value="{{ old('name') }}">
+                        value="{{ $driver->name }}">
                         @error('name')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -38,7 +38,7 @@
                         type="text" 
                         name="dni" 
                         placeholder="Cédula de chofer"
-                        value="{{ old('dni') }}">
+                        value="{{ $driver->dni }}">
                         @error('dni')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -50,7 +50,7 @@
 
                     <div class="col-md-4">
                         <label for="phone">Telefono</label>
-                        <input class="form-control @error('phone') is-invalid @enderror" id="phone" type="text" value="{{ old('phone') }}"name="phone" placeholder="Telefono de chofer" >
+                        <input class="form-control @error('phone') is-invalid @enderror" id="phone" type="text" value="{{ $driver->phone }}"name="phone" placeholder="Telefono de chofer" >
                         @error('phone')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -65,7 +65,7 @@
 
                     <div class="col-md-4">
                         <label for="email">Correo</label>
-                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ old('email') }}" placeholder="Correo de chofer" > 
+                        <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ $driver->email }}" placeholder="Correo de chofer" > 
                         @error('email')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -76,14 +76,44 @@
 
                     <div class="col-md-8">
                         <label for="phone">Dirección</label>
-                        <input value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de chofer" >
+                        <input value="{{ $driver->address }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de chofer" >
                         @error('address')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
                             </span>
                         @enderror
                     </div>
+                </div>
 
+                <hr>
+                <h3>Datos del Vehiculo</h3>
+
+                <div class="row mt-2">
+                    <div class="col-md-4">
+                        <label for="email">Placa</label>
+                        <input class="form-control @error('vehicle_plate') is-invalid @enderror" id="vehicle_plate" type="text" name="vehicle_plate" value="{{ $driver->vehicle_plate }}" placeholder="Placa del Vehiculo" > 
+                        @error('vehicle_plate')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="email">Ejes</label>
+
+                        <select class="form-control @error('vehicle_axle') is-invalid @enderror" name="vehicle_axle" id="vehicle_axle" >
+                            <option value="2" {{ $driver->axle == 2 ? 'selected' :""}}>2 ejes</option>
+                            <option value="3" {{ $driver->axle == 3 ? 'selected' :""}}>3 ejes</option>
+                            <option value="4" {{ $driver->axle == 4 ? 'selected' :""}}>4 ejes</option>
+                            <option value="5" {{ $driver->axle == 5 ? 'selected' :""}}>5 ejes</option>
+                        </select>
+                        @error('vehicle_axle')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
 
                 </div>
 

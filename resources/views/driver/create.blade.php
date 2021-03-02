@@ -62,7 +62,6 @@
                 </div>
 
                 <div class="row mt-2">
-
                     <div class="col-md-4">
                         <label for="email">Correo</label>
                         <input class="form-control @error('email') is-invalid @enderror" id="correo" type="text" name="email" value="{{ old('email') }}" placeholder="Correo de chofer" > 
@@ -73,7 +72,6 @@
                         @enderror
                     </div>
 
-
                     <div class="col-md-8">
                         <label for="phone">Dirección</label>
                         <input value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" id="address" type="text" name="address" placeholder="Direccion de chofer" >
@@ -83,8 +81,18 @@
                             </span>
                         @enderror
                     </div>
+                </div>
 
-
+                <div class="row mt-2">
+                    <div class="col-md-4">
+                        <label for="email">Placa</label>
+                        <input class="form-control @error('vehicle_plate') is-invalid @enderror" id="vehicle_plate" type="text" name="vehicle_plate" value="{{ old('vehicle_plate') }}" placeholder="Placa del Vehiculo" > 
+                        @error('vehicle_plate')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
 
