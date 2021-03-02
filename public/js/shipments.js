@@ -34,6 +34,7 @@ $(function() {
       method: 'GET',
       success: (r) => {
         $('#h3_driver').html("<h3>Chofer: " + r.name + "</h3>");
+        $('#vehicle_plate').val(r.vehicle_plate);
       }
     });
   });

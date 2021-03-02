@@ -106,7 +106,7 @@
                 <h3 id="h3_driver">Chofer: </h3>
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <label>Seleccione un Chofer</label>
                         <input type="text" class="form-control" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
                         <datalist id="drivers_list">
@@ -114,6 +114,11 @@
                                 <option value="{{ $driver->id }}">{{ $driver->name }}</option>
                             @endforeach
                         </datalist>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Placa</label>
+                        <input type="text" class="form-control" id="vehicle_plate" name="vehicle_plate" placeholder="Placa" />
                     </div>
 
                 </div>
