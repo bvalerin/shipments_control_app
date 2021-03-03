@@ -24,51 +24,28 @@ class ShipmentController extends Controller{
     }
 
     public function store(Request $request){
-        
+        $data = Shipment::validated($request);
+
+        dd($data);
+
+        Shipment::insert($data);
+        return redirect()->route('shipments.index')->with('msj', 'Cliente '. $data['name'] . ' se creo con exito.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Shipment  $shipment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Shipment $shipment)
-    {
-        //
+
+    public function show(Shipment $shipment){
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Shipment  $shipment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Shipment $shipment)
-    {
-        //
+    public function edit(Shipment $shipment){
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shipment  $shipment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Shipment $shipment)
-    {
-        //
+
+    public function update(Request $request, Shipment $shipment){
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Shipment  $shipment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Shipment $shipment)
-    {
-        //
+    public function destroy(Shipment $shipment){
     }
 }

@@ -22,7 +22,8 @@
             <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th width="40%" scope="col">Nombre</th>
+                    <th width="20%" scope="col">Nombre</th>
+                    <th width="20%" scope="col">Placa</th>
                     <th width="20%" scope="col">Teléfono</th>
                     <th width="20%" scope="col">Correo</th>
                     <th width="20%" scope="col">Acciones</th>
@@ -32,6 +33,7 @@
                     @foreach ($drivers as $driver)
                         <tr>
                             <td>{{ $driver->name }}({{ $driver->dni }})</td>
+                            <td>{{ $driver->vehicle_plate }}</td>
                             <td>{{ $driver->phone }}</td>
                             <td>{{ $driver->email }}</td>
                             <td class="text-center">

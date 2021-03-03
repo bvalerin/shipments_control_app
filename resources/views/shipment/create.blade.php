@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <form class="form-group" action="{{ route("customers.store") }}" method="post" novalidate>
+            <form class="form-group" action="{{ route("shipments.store") }}" method="post" novalidate>
                 @csrf
                 <h3 id="h3_customer">Cliente: </h3>
                 <div class="row">

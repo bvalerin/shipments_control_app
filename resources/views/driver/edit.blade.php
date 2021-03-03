@@ -103,10 +103,10 @@
                         <label for="email">Ejes</label>
 
                         <select class="form-control @error('vehicle_axle') is-invalid @enderror" name="vehicle_axle" id="vehicle_axle" >
-                            <option value="2" {{ $driver->axle == 2 ? 'selected' :""}}>2 ejes</option>
-                            <option value="3" {{ $driver->axle == 3 ? 'selected' :""}}>3 ejes</option>
-                            <option value="4" {{ $driver->axle == 4 ? 'selected' :""}}>4 ejes</option>
-                            <option value="5" {{ $driver->axle == 5 ? 'selected' :""}}>5 ejes</option>
+                            <option value="2" {{ $driver->vehicle_axle == 2 ? 'selected' :""}}>2 ejes</option>
+                            <option value="3" {{ $driver->vehicle_axle == 3 ? 'selected' :""}}>3 ejes</option>
+                            <option value="4" {{ $driver->vehicle_axle == 4 ? 'selected' :""}}>4 ejes</option>
+                            <option value="5" {{ $driver->vehicle_axle == 5 ? 'selected' :""}}>5 ejes</option>
                         </select>
                         @error('vehicle_axle')
                             <span class="invalid-feedback d-block"  role="alert">

@@ -13,8 +13,6 @@ $(function() {
   $('body').on('change', '#input_search_customer', function() {
     const customer_id = $('#input_search_customer').val();
 
-    "input[name='_token']"
-
     $.ajax({
       url: base_path + "clientes/" + customer_id + "/json",
       dataType: 'json',
@@ -24,6 +22,7 @@ $(function() {
         $('#h3_customer').html("<h3>Cliente: " + r.name + "</h3>");
       }
     });
+    
   });
 
   $('body').on('change', '#input_search_driver', function() {

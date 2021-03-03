@@ -19,8 +19,6 @@ class CreateShipmentsTable extends Migration{
             $table->string('container_number');
             $table->string('chasis_number');
             $table->string('vehicle_plate');
-            $table->string('vehicle_size');
-            $table->string('vehicle_axle');
             $table->string('shipment_state');
             $table->timestamps();
             $table->softDeletes();

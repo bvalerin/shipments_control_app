@@ -13,9 +13,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
