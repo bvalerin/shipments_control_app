@@ -13,7 +13,7 @@ class ShipmentController extends Controller{
     }
 
     public function index(){
-        $shipments = Shipment::paginate(1);
+        $shipments = Shipment::orderBy('shipment_date', 'DESC')->paginate(6);
         return view('shipment.index', compact('shipments'));
     }
 
@@ -25,11 +25,9 @@ class ShipmentController extends Controller{
 
     public function store(Request $request){
         $data = Shipment::validated($request);
-
-        dd($data);
-
+        $data['user_id'] = auth()->id();
         Shipment::insert($data);
-        return redirect()->route('shipments.index')->with('msj', 'Cliente '. $data['name'] . ' se creo con exito.');
+        return redirect()->route('shipments.index')->with('msj', 'Despacho se creo con exito.');
     }
 
 

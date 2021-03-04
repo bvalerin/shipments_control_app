@@ -19,18 +19,15 @@ class CreateShipmentsTable extends Migration{
             $table->string('container_number');
             $table->string('chasis_number');
             $table->string('vehicle_plate');
-            $table->string('shipment_state');
+            $table->unsignedTinyInteger('shipment_state')->length(1)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down(){
         Schema::dropIfExists('shipments');
     }
+    
 }

@@ -17,7 +17,12 @@
                 <div class="row">
                     <div class="col-md-8">
                         <label>Seleccione un cliente</label>
-                        <input type="text" class="form-control" id="input_search_customer" list="customers_list" placeholder="Cliente" />
+                        <input type="text" value="{{ old("customer_id") }}" class="form-control" name="customer_id" id="input_search_customer" list="customers_list" placeholder="Cliente" />
+                        @error('customer_id')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
                         <datalist id="customers_list">
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -27,7 +32,7 @@
 
                     <div class="col-md-4">
                         <label for="phone">Fecha Colocacion</label>
-                        <input class="form-control @error('shipment_date') is-invalid @enderror" id="shipment_date" type="date" name="shipment_date" >
+                        <input value="{{ old("shipment_date")}}" class="form-control @error('shipment_date') is-invalid @enderror" id="shipment_date" type="date" name="shipment_date" >
                         @error('shipment_date')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -44,7 +49,7 @@
                         class="form-control @error('origin') is-invalid @enderror" 
                         id="name" 
                         type="text" 
-                        name="name" 
+                        name="origin" 
                         placeholder="Origen"
                         value="{{ old('origin') }}">
                         @error('origin')
@@ -56,7 +61,7 @@
 
                     <div class="col-md-6">
                         <label for="email">Destino</label>
-                        <input class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" > 
+                        <input value="{{ old('destination') }}" class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" > 
                         @error('destination')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -71,7 +76,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Numero de contenedor</label>
-                        <input name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
+                        <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
                         @error('container_number')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
@@ -81,7 +86,7 @@
 
                     <div class="col-md-4">
                         <label>Numero de Chasis</label>
-                        <input name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
+                        <input value="{{ old("chasis_number") }}"name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
                         @error('chasis_number')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
@@ -91,11 +96,11 @@
 
                     <div class="col-md-4">
                         <label>Numero de contenedor</label>
-                        <input name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
+                        <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
                         @error('container_number')
-                        <span class="invalid-feedback d-block"  role="alert">
-                            <strong> {{ $message }} </strong>
-                        </span>
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
                         @enderror
                     </div>
                 </div>
@@ -108,7 +113,12 @@
 
                     <div class="col-md-8">
                         <label>Seleccione un Chofer</label>
-                        <input type="text" class="form-control" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
+                        <input value="{{ old("driver_id") }}" name="driver_id" type="text" class="form-control" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
+                        @error('driver_id')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
                         <datalist id="drivers_list">
                             @foreach($drivers as $driver)
                                 <option value="{{ $driver->id }}">{{ $driver->name }}</option>

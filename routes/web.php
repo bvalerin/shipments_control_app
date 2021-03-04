@@ -41,6 +41,7 @@ Route::get('/choferes/{driver}/json', [App\Http\Controllers\DriverController::cl
 Route::get('/despachos', [App\Http\Controllers\ShipmentController::class, 'index'])->name('shipments.index');
 Route::get('/despachos/crear', [App\Http\Controllers\ShipmentController::class, 'create'])->name('shipments.create');
 Route::post('/despachos', [App\Http\Controllers\ShipmentController::class, 'store'])->name('shipments.store');
+Route::get('/despachos/{shipment}/edit', [App\Http\Controllers\DriverController::class, 'edit'])->name('shipments.edit');
 
 
 

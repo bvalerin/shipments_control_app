@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Models;
+
+use App\Models\Shipment;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,6 +41,10 @@ class Customer extends Model{
                 'address.required'=> 'La direccion es requerida'
             ]
         );
+    }
+
+    public function shipments(){
+        return $this->hasMany(Shipment::class);
     }
 
 

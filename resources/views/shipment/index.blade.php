@@ -25,7 +25,11 @@
                         <tr>
                             <td>{{ $ship->name }}</td>
                             <td>{{ $ship->email }}</td>
-                            <td>{{ $ship->phone }}</td>
+                            <td>{{ $ship->vehicle_plate }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('shipments.edit', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-primary">Editar</a>
+                                <a href="" class="btn btn-inline btn-danger">Borrar</a>
+                            </td>
                         </tr>
                     @endforeach
 

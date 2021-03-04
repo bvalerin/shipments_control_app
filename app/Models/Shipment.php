@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Driver;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +31,8 @@ class Shipment extends Model{
     public static function validated(Request $request){
         return $request->validate(
             [
+                'customer_id' => 'required|exists:customers,id',
+                'driver_id' => 'required|exists:drivers,id',
                 'origin' => 'required',
                 'destination' => 'required',
                 'shipment_date' => 'required',
@@ -38,8 +42,10 @@ class Shipment extends Model{
                 'instructions' => 'nullable',
             ],
             [
+                'customer_id.exists' => 'El cliente ingresado no esta registrado',
+                'driver_id.exists' => 'El chofer ingresado no existe',
                 'origin.required'=> 'El origen es requrido',
-                'destination.required'=> 'El destino es requrido', 
+                'destination.required'=> 'El destino es reque0rido', 
                 'shipment_date.required'=> 'La fecha de colocacion es requerida',
                 'container_number.required' => 'El numero de contenedor es requerido',
                 'chasis_number.required'=> 'El numero de chasis es requerido',
@@ -47,6 +53,14 @@ class Shipment extends Model{
                 'address.required'=> 'La direccion es requerida'
             ]
         );
+    }
+
+    public function customer(){
+        return $this->hasOne(Customer::class);
+    }
+
+    public function driver(){
+        return $this->hasOne(Driver::class);
     }
 
 }
