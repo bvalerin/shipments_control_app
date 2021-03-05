@@ -57,6 +57,10 @@ class CustomerController extends Controller{
         return json_encode($customer);
     }
 
+    public function shipments(){
+        return $this->hasMany(Shipment::class);
+    }
+
 
 
 

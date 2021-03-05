@@ -54,5 +54,9 @@ class DriverController extends Controller{
         return json_encode($driver);
     }
 
+    public function shipments(){
+        return $this->hasMany(Shipment::class);
+    }
+
     
 }

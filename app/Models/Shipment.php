@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Driver;
-use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,11 +55,11 @@ class Shipment extends Model{
     }
 
     public function customer(){
-        return $this->hasOne(Customer::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function driver(){
-        return $this->hasOne(Driver::class);
+        return $this->belongsTo(Driver::class);
     }
 
 }

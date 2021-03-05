@@ -15,18 +15,29 @@
                   <tr>
                     <th scope="col">Cliente</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Chofer</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                     @foreach ($shipments as $ship)
+                        @php 
+                            switch ($ship->shipment_state) {
+                                case 1: $state = "Enviado"; break;
+                                default: $state = "Pendiente"; break;
+                            } 
+                        @endphp
 
                         <tr>
-                            <td>{{ $ship->name }}</td>
-                            <td>{{ $ship->email }}</td>
+                            <td>{{ $ship->customer->name }}</td>
+                            <td>{{ date_format(date_create($ship->shipment_date),'d-m-y') }}</td>
                             <td>{{ $ship->vehicle_plate }}</td>
+
+                            <td>{{ $state }}</td>
+
                             <td class="text-center">
+                                <a href="{{ route('shipments.download', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-info">Descargar</a>
                                 <a href="{{ route('shipments.edit', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-primary">Editar</a>
                                 <a href="" class="btn btn-inline btn-danger">Borrar</a>
                             </td>

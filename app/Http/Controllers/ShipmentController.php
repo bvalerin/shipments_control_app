@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Driver;
 use App\Models\Customer;
 use App\Models\Shipment;
+
 use Illuminate\Http\Request;
+
+use PDF;
 
 class ShipmentController extends Controller{
     function __construct(){
@@ -46,4 +49,15 @@ class ShipmentController extends Controller{
 
     public function destroy(Shipment $shipment){
     }
+
+    public function download(Request $request, Shipment $shipment){
+        $data = [
+            'shipment' => $shipment,
+            'customer' => $shipment->customer,
+            'driver' => $shipment->driver
+        ];
+        $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data);
+        return $pdf->download('shipment.pdf');
+    }
+
 }
