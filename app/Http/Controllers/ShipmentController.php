@@ -56,7 +56,8 @@ class ShipmentController extends Controller{
             'customer' => $shipment->customer,
             'driver' => $shipment->driver
         ];
-        $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data);
+
+        $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a5', 'landscape');
         return $pdf->download('shipment.pdf');
     }
 
