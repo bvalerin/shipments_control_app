@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Driver;
 use App\Models\Customer;
+
 use App\Models\Shipment;
 
 use Illuminate\Http\Request;
-
-use PDF;
 
 class ShipmentController extends Controller{
     function __construct(){
@@ -16,6 +16,13 @@ class ShipmentController extends Controller{
     }
 
     public function index(){
+        
+        // $users = DB::table('users')
+        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'users.id', '=', 'orders.user_id')
+        //     ->select('users.*', 'contacts.phone', 'orders.price')
+        //     ->get();
+            
         $shipments = Shipment::orderBy('shipment_date', 'DESC')->paginate(6);
         return view('shipment.index', compact('shipments'));
     }
@@ -29,7 +36,7 @@ class ShipmentController extends Controller{
     public function store(Request $request){
         $data = Shipment::validated($request);
         $data['user_id'] = auth()->id();
-        Shipment::insert($data);
+        $result  = Shipment::insert($data);
         return redirect()->route('shipments.index')->with('msj', 'Despacho se creo con exito.');
     }
 
@@ -57,7 +64,7 @@ class ShipmentController extends Controller{
             'driver' => $shipment->driver
         ];
 
-        $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a5', 'landscape');
+        $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a4', 'portrait');
         return $pdf->download('shipment.pdf');
     }
 

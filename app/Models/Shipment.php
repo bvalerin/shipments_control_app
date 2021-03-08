@@ -18,10 +18,10 @@ class Shipment extends Model{
         'shipment_date',
         'instructions',
         'container_number',
+        'container_size',
         'chasis_number',
         'vehicle_plate',
         'shipment_state',
-
     ];
 
     
@@ -36,6 +36,7 @@ class Shipment extends Model{
                 'destination' => 'required',
                 'shipment_date' => 'required',
                 'container_number' => 'required',
+                'container_size' => 'required',
                 'chasis_number' => 'required',
                 'vehicle_plate' => 'required',
                 'instructions' => 'nullable',
@@ -47,6 +48,7 @@ class Shipment extends Model{
                 'destination.required'=> 'El destino es reque0rido', 
                 'shipment_date.required'=> 'La fecha de colocacion es requerida',
                 'container_number.required' => 'El numero de contenedor es requerido',
+                'container_size.required' => 'El tamaño del contenedor es requerido',
                 'chasis_number.required'=> 'El numero de chasis es requerido',
                 'vehicle_plate.required'=> 'La placa del vehiculo es requerida',
                 'address.required'=> 'La direccion es requerida'

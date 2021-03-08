@@ -74,7 +74,7 @@
                 <hr>
                 <h3>Datos de equipo a usar</h3>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label>Numero de contenedor</label>
                         <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
                         @error('container_number')
@@ -84,7 +84,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label>Numero de Chasis</label>
                         <input value="{{ old("chasis_number") }}"name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
                         @error('chasis_number')
@@ -94,7 +94,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label>Numero de contenedor</label>
                         <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
                         @error('container_number')
@@ -103,6 +103,18 @@
                             </span>
                         @enderror
                     </div>
+
+                    <div class="col-md-3">
+                        <label>Tamaño de contenedor</label>
+                        <input value="{{ old("container_size") }}" name="container_size" id="container_size" placeholder="Tamaño de contenedor" class="form-control" />
+                        @error('container_size')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    
                 </div>
 
                 <hr>

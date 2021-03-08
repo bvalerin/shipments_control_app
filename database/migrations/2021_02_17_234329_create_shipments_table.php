@@ -17,6 +17,7 @@ class CreateShipmentsTable extends Migration{
             $table->dateTime('shipment_date', $precision = 0);
             $table->string('instructions');
             $table->string('container_number');
+            $table->string('container_size');
             $table->string('chasis_number');
             $table->string('vehicle_plate');
             $table->unsignedTinyInteger('shipment_state')->length(1)->default(0);

@@ -2,103 +2,454 @@
 <html lang="en">
 <head>
     <style>
-
-        .text-left{
-            text-align: left;
-        }
-
-        .text-right{
-            text-align:right;
-        }
-
-        .text-center{
-            text-align: center;
-        }
-
-        .w50{
-            width:50%;
-        }
-
-        
-        .w33{
-            width:33.33%;
-            float:left;
-        }
-
-        .w20{
-            width:20%;
-            float:left;
-        }
-
-        .fleft{
-            float:left;
-        }
-
-
         html{
-            padding:0;
-            margin:0;
-        }
-
-        .no-margin{
-            margin:0;
-        }
-
-        .no-padding{
+            margin: 0;
             padding:0;
         }
+
+        .table {
+width: 100%;
+margin-bottom: 1rem;
+color: #212529;
+}
+
+.table th,
+.table td {
+padding: 0.25rem;
+vertical-align: top;
+border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+vertical-align: bottom;
+border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+border-top: 2px solid #dee2e6;
+}
+
+.table-sm th,
+.table-sm td {
+padding: 0.3rem;
+}
+
+.table-bordered {
+border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+border-bottom-width: 2px;
+}
+
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless tbody + tbody {
+border: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+color: #212529;
+background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+background-color: #b8daff;
+}
+
+.table-primary th,
+.table-primary td,
+.table-primary thead th,
+.table-primary tbody + tbody {
+border-color: #7abaff;
+}
+
+.table-hover .table-primary:hover {
+background-color: #9fcdff;
+}
+
+.table-hover .table-primary:hover > td,
+.table-hover .table-primary:hover > th {
+background-color: #9fcdff;
+}
+
+.table-secondary,
+.table-secondary > th,
+.table-secondary > td {
+background-color: #d6d8db;
+}
+
+.table-secondary th,
+.table-secondary td,
+.table-secondary thead th,
+.table-secondary tbody + tbody {
+border-color: #b3b7bb;
+}
+
+.table-hover .table-secondary:hover {
+background-color: #c8cbcf;
+}
+
+.table-hover .table-secondary:hover > td,
+.table-hover .table-secondary:hover > th {
+background-color: #c8cbcf;
+}
+
+.table-success,
+.table-success > th,
+.table-success > td {
+background-color: #c3e6cb;
+}
+
+.table-success th,
+.table-success td,
+.table-success thead th,
+.table-success tbody + tbody {
+border-color: #8fd19e;
+}
+
+.table-hover .table-success:hover {
+background-color: #b1dfbb;
+}
+
+.table-hover .table-success:hover > td,
+.table-hover .table-success:hover > th {
+background-color: #b1dfbb;
+}
+
+.table-info,
+.table-info > th,
+.table-info > td {
+background-color: #bee5eb;
+}
+
+.table-info th,
+.table-info td,
+.table-info thead th,
+.table-info tbody + tbody {
+border-color: #86cfda;
+}
+
+.table-hover .table-info:hover {
+background-color: #abdde5;
+}
+
+.table-hover .table-info:hover > td,
+.table-hover .table-info:hover > th {
+background-color: #abdde5;
+}
+
+.table-warning,
+.table-warning > th,
+.table-warning > td {
+background-color: #ffeeba;
+}
+
+.table-warning th,
+.table-warning td,
+.table-warning thead th,
+.table-warning tbody + tbody {
+border-color: #ffdf7e;
+}
+
+.table-hover .table-warning:hover {
+background-color: #ffe8a1;
+}
+
+.table-hover .table-warning:hover > td,
+.table-hover .table-warning:hover > th {
+background-color: #ffe8a1;
+}
+
+.table-danger,
+.table-danger > th,
+.table-danger > td {
+background-color: #f5c6cb;
+}
+
+.table-danger th,
+.table-danger td,
+.table-danger thead th,
+.table-danger tbody + tbody {
+border-color: #ed969e;
+}
+
+.table-hover .table-danger:hover {
+background-color: #f1b0b7;
+}
+
+.table-hover .table-danger:hover > td,
+.table-hover .table-danger:hover > th {
+background-color: #f1b0b7;
+}
+
+.table-light,
+.table-light > th,
+.table-light > td {
+background-color: #fdfdfe;
+}
+
+.table-light th,
+.table-light td,
+.table-light thead th,
+.table-light tbody + tbody {
+border-color: #fbfcfc;
+}
+
+.table-hover .table-light:hover {
+background-color: #ececf6;
+}
+
+.table-hover .table-light:hover > td,
+.table-hover .table-light:hover > th {
+background-color: #ececf6;
+}
+
+.table-dark,
+.table-dark > th,
+.table-dark > td {
+background-color: #c6c8ca;
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th,
+.table-dark tbody + tbody {
+border-color: #95999c;
+}
+
+.table-hover .table-dark:hover {
+background-color: #b9bbbe;
+}
+
+.table-hover .table-dark:hover > td,
+.table-hover .table-dark:hover > th {
+background-color: #b9bbbe;
+}
+
+.table-active,
+.table-active > th,
+.table-active > td {
+background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover {
+background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover > td,
+.table-hover .table-active:hover > th {
+background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table .thead-dark th {
+color: #fff;
+background-color: #343a40;
+border-color: #454d55;
+}
+
+.table .thead-light th {
+color: #495057;
+background-color: #e9ecef;
+border-color: #dee2e6;
+}
+
+.table-dark {
+color: #fff;
+background-color: #343a40;
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
+border-color: #454d55;
+}
+
+.table-dark.table-bordered {
+border: 0;
+}
+
+.table-dark.table-striped tbody tr:nth-of-type(odd) {
+background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-dark.table-hover tbody tr:hover {
+color: #fff;
+background-color: rgba(255, 255, 255, 0.075);
+}
+
+@media (max-width: 575.98px) {
+.table-responsive-sm {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.table-responsive-sm > .table-bordered {
+border: 0;
+}
+}
+
+@media (max-width: 767.98px) {
+.table-responsive-md {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.table-responsive-md > .table-bordered {
+border: 0;
+}
+}
+
+@media (max-width: 991.98px) {
+.table-responsive-lg {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.table-responsive-lg > .table-bordered {
+border: 0;
+}
+}
+
+@media (max-width: 1199.98px) {
+.table-responsive-xl {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.table-responsive-xl > .table-bordered {
+border: 0;
+}
+}
+
+.table-responsive {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+
+.table-responsive > .table-bordered {
+border: 0;
+}
+
+.table-responsive {
+display: block;
+width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+
+.table-responsive > .table-bordered {
+border: 0;
+}
+
+.text-center{
+    text-align: center;
+    margin:0;
+    padding:0;
+}
+
 
     </style>
 </head>
 <body>
+    <h4 class="text-center">Transportes MYM Caldera S.A</h4>
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="1">Cliente: </td>
+            <td colspan="4">{{ $customer->name }}</td>
+        </tr>
 
-    <h1 class="no-margin no-padding text-center">Transportes MYM Caldera S.A.</h1>
-    <h2 class="w50 fleft no-margin no-padding">Cliente</h2>
-    <h2 class="w50 fleft text-right no-margin no-padding">{{ $customer->name }}</h2>
-    <br>
-    <hr>
-    <h3 class="w50 fleft no-margin no-padding">Direccion: {{ $customer->address }}</h3>
-    <h3 class="w50 fleft text-right no-margin no-padding">Telefono: {{ $customer->phone }} </h3>
-    <br> <br> <br>
-    <h2 class="w50 fleft no-margin no-padding">Transporte</h2>
-    <h3 class="w50 fleft text-right no-margin no-padding">Fecha: {{ date_format(date_create($shipment->shipment_date),'d-m-y') }}</h3>
-    <br>
-    <hr>
-    <h3 class="w50 fleft no-margin no-padding">Origen: {{ $shipment->origin }}</h3>
-    <h3 class="no-margin no-padding">Destino: {{ $shipment->destination }} </h3>
+        <tr>
+            <td colspan="2">Origen: {{ $shipment->origin }}</td>
+            <td colspan="3">Destino: {{ $shipment->destination }}</td>
+        </tr>
 
-    <br>
+        <tr>
+            <td># Contenedor: {{ $shipment->container_number }}</td>
+            <td># Chasis: {{ $shipment->chasis_number }}</td>
+            <td># Placa: {{ $shipment->destination }}</td>
+            <td>Tamaño: {{ $shipment->container_size }}</td>
+            <td>Ejes: {{ $driver->vehicle_axle }}</td>
+        </tr>
 
-    <br>
-    <h2 class="no-margin no-padding">Datos de equipo a usar</h2>
-    <hr>
-    <div class="w20">
-       <h3 class="no-margin no-padding"># Contenedor: {{ $shipment->container_number }}</h3>
-    </div>
+        <tr>
+            <td colspan="2">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Cédula: {{ $driver->dni }}</td>
+            <td colspan="2">Teléfono: {{ $driver->phone }}</td>
+        </tr>
 
-    <div class="w20">
-        <h3 class="no-margin no-padding"># Contenedor: {{ $shipment->container_number }}</h3>
-    </div>
+        <tr>
+            <td colspan="5">Instrucciones:</td>
+        </tr>
 
-    <div class="w20">
-        <h3 class="no-margin no-padding"># Contenedor: {{ $shipment->container_number }}</h3>
-    </div>
-
-    <div class="w20">
-        <h3 class="no-margin no-padding"># Contenedor: {{ $shipment->container_number }}</h3>
-    </div>
-
-    <div class="w20">
-        <h3 class="no-margin no-padding"># Contenedor: {{ $shipment->container_number }}</h3>
-    </div>
+        <tr>
+            <td colspan="5">{{ $shipment->instructions}}</td>
+        </tr>
 
 
 
-    <h2 class="no-margin no-padding">Instrucciones</h2>
-    <hr>
-    <p> {{ $shipment->instructions }} </p>
+        <br>
+
+        <tr>
+            <td colspan="5">
+                <p>
+                    Cualquier accidente o incidente, falta o violacion de las leyes de carreteras o transito que cause responsabilidad crinimal, civil, penal o de trabajo, daños a terceras personas o propiedad ajena publica, es por cuenta de y la total y unica responsabilidad del chofer y del transportista propietario del vehiculo que remolca la unidad.
+                </p>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                1. EL CLIENTE ESTA DE ACUERDO EN QUE LAS CONDICIONES DEL EQUIPO SON IDEALES PARA EL TRANSPORTE DE SUS MERCANCIAS.
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                1. EL CLIENTE ASUME LA RESPONSABILIDAD POR CUALQUIER DAÑO, PERDIDA O ROBO QUE PUEDA SUFRIR EL EQUIPO DURANTE QUE ESTE BAJO SU CUSTODIA.
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                __________________________________<br>
+                ACEPTACION CLIENTE
+            </td>
+
+            <td>
+                __________________________________<br>
+                CONDUCTOR
+            </td>
+
+            <td>
+                __________________________________<br>
+                DESPACHADOR
+            </td>
+        </tr>
 
 
-
+        
+    </table>
+    
 </body>
 </html>
