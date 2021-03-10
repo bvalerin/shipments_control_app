@@ -86,7 +86,7 @@
 
                     <div class="col-md-3">
                         <label>Numero de Chasis</label>
-                        <input value="{{ old("chasis_number") }}"name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
+                        <input value="{{ old("chasis_number") }}" name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
                         @error('chasis_number')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
@@ -95,9 +95,9 @@
                     </div>
 
                     <div class="col-md-3">
-                        <label>Numero de contenedor</label>
-                        <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
-                        @error('container_number')
+                        <label>Numero de placa</label>
+                        <input value="{{ old("container_plate") }}" name="container_plate" id="container_plate" placeholder="Numero de placa" class="form-control" />
+                        @error('container_plate')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
                             </span>
@@ -105,16 +105,21 @@
                     </div>
 
                     <div class="col-md-3">
-                        <label>Tamaño de contenedor</label>
-                        <input value="{{ old("container_size") }}" name="container_size" id="container_size" placeholder="Tamaño de contenedor" class="form-control" />
-                        @error('container_size')
+                        <label for="email">Ejes</label>
+
+                        <select class="form-control @error('vehicle_axle') is-invalid @enderror" name="vehicle_axle" id="vehicle_axle" >
+                            <option value="2" {{ old("vehicle_axle") == 2 ? 'selected' :""}}>2 ejes</option>
+                            <option value="3" {{ old("vehicle_axle") == 3 ? 'selected' :""}}>3 ejes</option>
+                            <option value="4" {{ old("vehicle_axle") == 4 ? 'selected' :""}}>4 ejes</option>
+                            <option value="5" {{ old("vehicle_axle") == 5 ? 'selected' :""}}>5 ejes</option>
+                        </select>
+                        @error('vehicle_axle')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
                             </span>
                         @enderror
                     </div>
 
-                    
                 </div>
 
                 <hr>
@@ -141,6 +146,11 @@
                     <div class="col-md-4">
                         <label>Placa</label>
                         <input type="text" class="form-control" id="vehicle_plate" name="vehicle_plate" placeholder="Placa" />
+                        @error('vehicle_plate')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
                     </div>
 
                 </div>

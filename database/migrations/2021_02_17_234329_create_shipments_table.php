@@ -18,8 +18,10 @@ class CreateShipmentsTable extends Migration{
             $table->string('instructions');
             $table->string('container_number');
             $table->string('container_size');
+            $table->string('container_plate');
             $table->string('chasis_number');
             $table->string('vehicle_plate');
+            $table->string('vehicle_axle')->nullable();
             $table->unsignedTinyInteger('shipment_state')->length(1)->default(0);
             $table->timestamps();
             $table->softDeletes();

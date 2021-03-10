@@ -3,19 +3,20 @@
 <head>
     <style>
         html{
-            margin: 0;
+            margin: 5px;
             padding:0;
+            font-size: 12px;
         }
 
         .table {
-width: 100%;
-margin-bottom: 1rem;
-color: #212529;
-}
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
 
 .table th,
 .table td {
-padding: 0.25rem;
+padding: 0.15rem;
 vertical-align: top;
 border-top: 1px solid #dee2e6;
 }
@@ -367,20 +368,48 @@ border: 0;
     padding:0;
 }
 
+#watermark {
+    position: fixed;
+    opacity: 0.1;
+
+    /** 
+        Set a position in the page for your image
+        This should center it vertically
+    **/
+    /* bottom:   10cm;
+    left:     5.5cm; */
+
+     /* Change image dimensions*/
+    width:    2cm;
+    height:   1cm;
+
+    /** Your watermark should be behind every content**/
+    z-index:  -1000;
+}
+
 
     </style>
 </head>
 <body>
+
+
+
+
     <h4 class="text-center">Transportes MYM Caldera S.A</h4>
+
     <table class="table table-bordered">
+
         <tr>
             <td colspan="1">Cliente: </td>
-            <td colspan="4">{{ $customer->name }}</td>
+            <td colspan="1">{{ $customer->name }}</td>
+            <td colspan="3" rowspan="2">
+                <img src="{{ public_path('img/logo_mym1.jpg') }} ">
+            </td>
         </tr>
 
         <tr>
-            <td colspan="2">Origen: {{ $shipment->origin }}</td>
-            <td colspan="3">Destino: {{ $shipment->destination }}</td>
+            <td colspan="1">Origen: {{ $shipment->origin }}</td>
+            <td colspan="1">Destino: {{ $shipment->destination }}</td>
         </tr>
 
         <tr>
@@ -443,7 +472,99 @@ border: 0;
 
             <td>
                 __________________________________<br>
-                DESPACHADOR
+                DESPACHADOR <br>
+                {{ $user->name }} <br>
+                {{ $user->phone }} <br>
+                {{ $user->email }}
+            </td>
+        </tr>
+
+
+        
+    </table>
+
+    <br>
+    <br>
+    <hr>
+
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="1">Cliente: </td>
+            <td colspan="1">{{ $customer->name }}</td>
+            <td colspan="3" rowspan="2">
+                <img src="{{ public_path('img/logo_mym1.jpg') }} ">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="1">Origen: {{ $shipment->origin }}</td>
+            <td colspan="1">Destino: {{ $shipment->destination }}</td>
+        </tr>
+
+        <tr>
+            <td># Contenedor: {{ $shipment->container_number }}</td>
+            <td># Chasis: {{ $shipment->chasis_number }}</td>
+            <td># Placa: {{ $shipment->destination }}</td>
+            <td>Tamaño: {{ $shipment->container_size }}</td>
+            <td>Ejes: {{ $driver->vehicle_axle }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Cédula: {{ $driver->dni }}</td>
+            <td colspan="2">Teléfono: {{ $driver->phone }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">Instrucciones:</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">{{ $shipment->instructions}}</td>
+        </tr>
+
+
+
+        <br>
+
+        <tr>
+            <td colspan="5">
+                <p>
+                    Cualquier accidente o incidente, falta o violacion de las leyes de carreteras o transito que cause responsabilidad crinimal, civil, penal o de trabajo, daños a terceras personas o propiedad ajena publica, es por cuenta de y la total y unica responsabilidad del chofer y del transportista propietario del vehiculo que remolca la unidad.
+                </p>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                1. EL CLIENTE ESTA DE ACUERDO EN QUE LAS CONDICIONES DEL EQUIPO SON IDEALES PARA EL TRANSPORTE DE SUS MERCANCIAS.
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                1. EL CLIENTE ASUME LA RESPONSABILIDAD POR CUALQUIER DAÑO, PERDIDA O ROBO QUE PUEDA SUFRIR EL EQUIPO DURANTE QUE ESTE BAJO SU CUSTODIA.
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                __________________________________<br>
+                ACEPTACION CLIENTE
+            </td>
+
+            <td>
+                __________________________________<br>
+                CONDUCTOR
+            </td>
+
+            <td>
+            __________________________________<br>
+                DESPACHADOR <br>
+                {{ $user->name }} <br>
+                {{ $user->phone }} <br>
+                {{ $user->email }}
             </td>
         </tr>
 

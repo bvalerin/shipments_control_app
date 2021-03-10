@@ -11,6 +11,7 @@ use App\Models\Shipment;
 use Illuminate\Http\Request;
 
 class ShipmentController extends Controller{
+
     function __construct(){
         $this->middleware('auth');
     }
@@ -34,8 +35,12 @@ class ShipmentController extends Controller{
     }
 
     public function store(Request $request){
+
         $data = Shipment::validated($request);
         $data['user_id'] = auth()->id();
+
+        dd($data);
+
         $result  = Shipment::insert($data);
         return redirect()->route('shipments.index')->with('msj', 'Despacho se creo con exito.');
     }
@@ -61,7 +66,8 @@ class ShipmentController extends Controller{
         $data = [
             'shipment' => $shipment,
             'customer' => $shipment->customer,
-            'driver' => $shipment->driver
+            'driver' => $shipment->driver,
+            'user' => auth()->user()
         ];
 
         $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a4', 'portrait');

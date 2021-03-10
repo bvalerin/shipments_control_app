@@ -37,10 +37,21 @@
                             {{--  <td>{{ $state }}</td>  --}}
 
                             <td class="text-center">
-                                <a href="{{ route('shipments.download', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-info">Descargar Retiro</a>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Opciones
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ route('shipments.download', ['shipment' => $ship->id]) }}">Descargar Retiro</a>
+                                        <a class="dropdown-item" href="{{ route('shipments.download', ['shipment' => $ship->id]) }}">Descargar Despacho</a>
+                                        <a class="dropdown-item" href="#">Editar</a>
+                                    </div>
+                                </div>
+
+                                <!-- <a href="{{ route('shipments.download', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-info">Descargar Retiro</a>
                                 <a href="{{ route('shipments.download', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-info">Descargar Despacho</a>
                                 <a href="{{ route('shipments.edit', ['shipment' => $ship->id]) }}" class="btn btn-inline btn-primary">Editar</a>
-                                <a href="" class="btn btn-inline btn-danger">Borrar</a>
+                                <a href="" class="btn btn-inline btn-danger">Borrar</a> -->
                             </td>
                         </tr>
                     @endforeach

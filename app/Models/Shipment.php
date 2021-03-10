@@ -18,10 +18,12 @@ class Shipment extends Model{
         'shipment_date',
         'instructions',
         'container_number',
+        'container_plate',
         'container_size',
         'chasis_number',
         'vehicle_plate',
         'shipment_state',
+        'vehicle_axle'
     ];
 
     
@@ -36,6 +38,7 @@ class Shipment extends Model{
                 'destination' => 'required',
                 'shipment_date' => 'required',
                 'container_number' => 'required',
+                'container_plate' => 'nullable',
                 'container_size' => 'required',
                 'chasis_number' => 'required',
                 'vehicle_plate' => 'required',
