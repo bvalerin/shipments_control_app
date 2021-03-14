@@ -49,7 +49,16 @@ class CustomerController extends Controller{
     }
 
     public function destroy(Customer $customer){
-        
+        $customer_name = $customer->name;
+        if(count(($customer->shipments)) > 0){
+            return redirect()->route('customers.index')
+            ->with('msj', 'El cliente ' . $customer_name . ' no se puede borrar porque esta vinculado a un despacho!')
+            ->with('type', 'danger');
+        }
+        $customer->delete();
+        return redirect()->route('customers.index')
+            ->with('msj', $customer_name . ' se elimino con exito.')
+            ->with('type','success');
     }
 
     public function get_customer_json(Customer $customer){

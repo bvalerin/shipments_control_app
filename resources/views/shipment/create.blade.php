@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <label>Seleccione un cliente</label>
-                        <input type="text" value="{{ old("customer_id") }}" class="form-control" name="customer_id" id="input_search_customer" list="customers_list" placeholder="Cliente" />
+                        <input type="text" value="{{ old("customer_id") }}" class="form-control @error('customer_id') is-invalid @enderror" name="customer_id" id="input_search_customer" list="customers_list" placeholder="Cliente" />
                         @error('customer_id')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Numero de contenedor</label>
-                        <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control" />
+                        <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control @error('container_number') is-invalid @enderror" />
                         @error('container_number')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
@@ -86,7 +86,7 @@
 
                     <div class="col-md-3">
                         <label>Numero de Chasis</label>
-                        <input value="{{ old("chasis_number") }}" name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control" />
+                        <input value="{{ old("chasis_number") }}" name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control @error('chasis_number') is-invalid @enderror" />
                         @error('chasis_number')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
@@ -96,7 +96,7 @@
 
                     <div class="col-md-3">
                         <label>Numero de placa</label>
-                        <input value="{{ old("container_plate") }}" name="container_plate" id="container_plate" placeholder="Numero de placa" class="form-control" />
+                        <input value="{{ old("container_plate") }}" name="container_plate" id="container_plate" placeholder="Numero de placa" class="form-control @error('container_plate') is-invalid @enderror" />
                         @error('container_plate')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -105,15 +105,27 @@
                     </div>
 
                     <div class="col-md-3">
+                        <label>Tamaño contenedor</label>
+                        <input value="{{ old("container_size") }}" name="container_size" id="container_size" placeholder="Numero de placa" class="form-control @error('container_size') is-invalid @enderror" />
+                        @error('container_size')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    
+
+                    <div class="col-md-3">
                         <label for="email">Ejes</label>
 
-                        <select class="form-control @error('vehicle_axle') is-invalid @enderror" name="vehicle_axle" id="vehicle_axle" >
-                            <option value="2" {{ old("vehicle_axle") == 2 ? 'selected' :""}}>2 ejes</option>
-                            <option value="3" {{ old("vehicle_axle") == 3 ? 'selected' :""}}>3 ejes</option>
-                            <option value="4" {{ old("vehicle_axle") == 4 ? 'selected' :""}}>4 ejes</option>
-                            <option value="5" {{ old("vehicle_axle") == 5 ? 'selected' :""}}>5 ejes</option>
+                        <select class="form-control @error('container_axle') is-invalid @enderror" name="container_axle" id="container_axle" >
+                            <option value="2" {{ old("container_axle") == 2 ? 'selected' :""}}>2 ejes</option>
+                            <option value="3" {{ old("container_axle") == 3 ? 'selected' :""}}>3 ejes</option>
+                            <option value="4" {{ old("container_axle") == 4 ? 'selected' :""}}>4 ejes</option>
+                            <option value="5" {{ old("container_axle") == 5 ? 'selected' :""}}>5 ejes</option>
                         </select>
-                        @error('vehicle_axle')
+                        @error('container_axle')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
                             </span>
@@ -130,7 +142,7 @@
 
                     <div class="col-md-8">
                         <label>Seleccione un Chofer</label>
-                        <input value="{{ old("driver_id") }}" name="driver_id" type="text" class="form-control" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
+                        <input value="{{ old("driver_id") }}" name="driver_id" type="text" class="form-control @error('driver_id') is-invalid @enderror" id="input_search_driver" list="drivers_list" placeholder="Chofer" />
                         @error('driver_id')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -145,7 +157,7 @@
 
                     <div class="col-md-4">
                         <label>Placa</label>
-                        <input type="text" class="form-control" id="vehicle_plate" name="vehicle_plate" placeholder="Placa" />
+                        <input value="{{ old("vehicle_plate") }}" type="text" class="form-control @error('vehicle_plate') is-invalid @enderror" id="vehicle_plate" name="vehicle_plate" placeholder="Placa" />
                         @error('vehicle_plate')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -158,14 +170,43 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label>Instrucciones</label>
-                        <textarea name="instructions" id="instructions" placeholder="Instruciones del despacho solicitado..." class="form-control" colspan="4">
+                        <textarea name="instructions" id="instructions" placeholder="Instruciones del despacho solicitado..." class="form-control @error('instructions') is-invalid @enderror" colspan="4">
+                        {{ old("instructions") }}
                         </textarea>
-                        @error('contact')
+                        @error('instructions')
                         <span class="invalid-feedback d-block"  role="alert">
                             <strong> {{ $message }} </strong>
                         </span>
                         @enderror
                     </div>
+                </div>
+
+                <hr>
+                <h3 id="h3_driver">Para boleta de retiro</h3>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Numero de booking</label>
+                        <input value="{{ old("booking_number") }}" type="text" class="form-control @error('booking_number') is-invalid @enderror" id="booking_number" name="booking_number" placeholder="Numero de booking..." />
+                        @error('booking_number')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Retira de</label>
+                        <input value="{{ old("retire_from") }}" type="text" class="form-control @error('retire_from') is-invalid @enderror" id="retire_from" name="retire_from" placeholder="Retira de..." />
+                        @error('retire_from')
+                            <span class="invalid-feedback d-block"  role="alert">
+                                <strong> {{ $message }} </strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    
+                    
                 </div>
 
 

@@ -23,7 +23,9 @@ class Shipment extends Model{
         'chasis_number',
         'vehicle_plate',
         'shipment_state',
-        'vehicle_axle'
+        'vehicle_axle',
+        'booking_number',
+        'retire_from'
     ];
 
     
@@ -38,11 +40,14 @@ class Shipment extends Model{
                 'destination' => 'required',
                 'shipment_date' => 'required',
                 'container_number' => 'required',
-                'container_plate' => 'nullable',
+                'container_plate' => 'required',
                 'container_size' => 'required',
+                'container_axle' => 'required',
                 'chasis_number' => 'required',
                 'vehicle_plate' => 'required',
                 'instructions' => 'nullable',
+                'booking_number' => 'nullable',
+                'retire_from' => 'nullable',
             ],
             [
                 'customer_id.exists' => 'El cliente ingresado no esta registrado',
@@ -51,10 +56,9 @@ class Shipment extends Model{
                 'destination.required'=> 'El destino es reque0rido', 
                 'shipment_date.required'=> 'La fecha de colocacion es requerida',
                 'container_number.required' => 'El numero de contenedor es requerido',
+                'container_plate.required' => 'La placa del contenedor es requerida',
                 'container_size.required' => 'El tamaño del contenedor es requerido',
                 'chasis_number.required'=> 'El numero de chasis es requerido',
-                'vehicle_plate.required'=> 'La placa del vehiculo es requerida',
-                'address.required'=> 'La direccion es requerida'
             ]
         );
     }

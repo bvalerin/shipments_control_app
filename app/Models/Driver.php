@@ -16,7 +16,6 @@ class Driver extends Model{
         'phone',
         'address',
         'vehicle_plate',
-        'vehicle_axle',
         'created_at',
         'updated_at'
     ];
@@ -30,13 +29,16 @@ class Driver extends Model{
                 'address' => 'nullable',
                 'dni' => 'nullable',
                 'vehicle_plate' => 'nullable',
-                'vehicle_axle' => 'nullable',
             ],
             [
                 'name.required'=> 'El nombre es requerido',
                 'name.min'=> 'El nombre debe tener minimo 3 caracteres',
             ]
         );
+    }
+
+    public function shipments(){
+        return $this->hasMany(Shipment::class);
     }
 
     

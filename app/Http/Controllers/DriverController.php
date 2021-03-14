@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\Shipment;
 use Illuminate\Http\Request;
 
 class DriverController extends Controller{
@@ -41,13 +42,22 @@ class DriverController extends Controller{
         $driver->phone = $data['phone'];
         $driver->address = $data['address'];
         $driver->vehicle_plate = $data['vehicle_plate'];
-        $driver->vehicle_axle = $data['vehicle_axle'];
         $driver->save();
         return redirect()->route('drivers.index')->with('msj', 'Datos de '. $driver->name . ' actualizaron con exito.');
+   
     }
 
     public function destroy(Driver $driver){
-        
+        $driver_name = $driver->name;
+        if(count(($driver->shipments)) > 0){
+            return redirect()->route('drivers.index')
+            ->with('msj', 'El chofer ' . $driver_name . ' no se puede borrar porque esta vinculado a un despacho!')
+            ->with('type', 'danger');
+        }
+        $driver->delete();
+        return redirect()->route('drivers.index')
+            ->with('msj', $driver_name . ' se elimino con exito.')
+            ->with('type','success');
     }
 
     public function get_driver_json(Driver $driver){

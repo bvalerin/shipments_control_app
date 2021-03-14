@@ -24,6 +24,7 @@ Route::get('/clientes/crear', [App\Http\Controllers\CustomerController::class, '
 Route::post('/clientes', [App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 Route::get('/clientes/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/clientes/{customer}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
+Route::delete('/clientes/{customer}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.destroy');
 Route::get('/clientes/{customer}/json', [App\Http\Controllers\CustomerController::class, 'get_customer_json'])->name('customers.get_customer_json');
 
 #Drivers routes
@@ -31,9 +32,8 @@ Route::get('/choferes', [App\Http\Controllers\DriverController::class, 'index'])
 Route::get('/choferes/crear', [App\Http\Controllers\DriverController::class, 'create'])->name('drivers.create');
 Route::post('/choferes', [App\Http\Controllers\DriverController::class, 'store'])->name('drivers.store');
 Route::get('/choferes/{driver}/edit', [App\Http\Controllers\DriverController::class, 'edit'])->name('drivers.edit');
-
 Route::get('/choferes/{driver}', [App\Http\Controllers\DriverController::class, 'update'])->name('drivers.update');
-
+Route::delete('/choferes/{driver}', [App\Http\Controllers\DriverController::class, 'destroy'])->name('driver.destroy');
 Route::get('/choferes/{driver}/json', [App\Http\Controllers\DriverController::class, 'get_driver_json'])->name('drivers.get_driver_json');
 
 
@@ -42,8 +42,10 @@ Route::get('/despachos', [App\Http\Controllers\ShipmentController::class, 'index
 Route::get('/despachos/crear', [App\Http\Controllers\ShipmentController::class, 'create'])->name('shipments.create');
 Route::post('/despachos', [App\Http\Controllers\ShipmentController::class, 'store'])->name('shipments.store');
 Route::get('/despachos/{shipment}/edit', [App\Http\Controllers\ShipmentController::class, 'edit'])->name('shipments.edit');
+Route::get('/despachos/{shipment}', [App\Http\Controllers\ShipmentController::class, 'update'])->name('shipment.update');
+Route::delete('/despachos/{shipment}', [App\Http\Controllers\ShipmentController::class, 'destroy'])->name('shipment.destroy');
 Route::get('/despachos/{shipment}/descargar', [App\Http\Controllers\ShipmentController::class, 'download'])->name('shipments.download');
-
+Route::get('/despachos/download_retire_slip/{shipment}/descargar', [App\Http\Controllers\ShipmentController::class, 'download_retire_slip'])->name('shipments.download_retire_slip');
 
 
 

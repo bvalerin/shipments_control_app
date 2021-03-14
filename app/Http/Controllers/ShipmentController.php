@@ -35,12 +35,9 @@ class ShipmentController extends Controller{
     }
 
     public function store(Request $request){
+        $data =  Shipment::validated($request);
 
-        $data = Shipment::validated($request);
         $data['user_id'] = auth()->id();
-
-        dd($data);
-
         $result  = Shipment::insert($data);
         return redirect()->route('shipments.index')->with('msj', 'Despacho se creo con exito.');
     }
@@ -51,15 +48,37 @@ class ShipmentController extends Controller{
     }
 
     public function edit(Shipment $shipment){
-
+        $customers = Customer::all();
+        $drivers = Driver::all();
+        return view('shipment.edit',compact('customers','drivers','shipment'));
     }
 
 
     public function update(Request $request, Shipment $shipment){
-
+        $data = Shipment::validated($request);
+        $shipment->customer_id = $data['customer_id'];
+        $shipment->driver_id = $data['driver_id'];
+        $shipment->origin = $data['origin'];
+        $shipment->destination = $data['destination'];
+        $shipment->shipment_date = $data['shipment_date'];
+        $shipment->container_number = $data['container_number'];
+        $shipment->container_plate = $data['container_plate'];
+        $shipment->container_size = $data['container_size'];
+        $shipment->container_axle = $data['container_axle'];
+        $shipment->chasis_number = $data['chasis_number'];
+        $shipment->vehicle_plate = $data['vehicle_plate'];
+        $shipment->instructions = $data['instructions'];
+        $shipment->booking_number = $data['booking_number'];
+        $shipment->retire_from = $data['retire_from'];
+        $shipment->save();
+        return redirect()->route('shipments.index')->with('msj', 'Datos del despacho se actualizaron con exito.');
     }
 
     public function destroy(Shipment $shipment){
+        $shipment->delete();
+        return redirect()->route('shipments.index')
+            ->with('msj', 'Despacho se elimino con exito.')
+            ->with('type','success');
     }
 
     public function download(Request $request, Shipment $shipment){
@@ -73,5 +92,19 @@ class ShipmentController extends Controller{
         $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a4', 'portrait');
         return $pdf->download('shipment.pdf');
     }
+
+    public function download_retire_slip(Request $request, Shipment $shipment){
+        $data = [
+            'shipment' => $shipment,
+            'customer' => $shipment->customer,
+            'driver' => $shipment->driver,
+            'user' => auth()->user()
+        ];
+
+        $pdf = PDF::loadView('shipment.pdf.retire_slip_pdf', $data)->setPaper('a4', 'portrait');
+        return $pdf->download('shipment.pdf');
+    }
+
+    
 
 }

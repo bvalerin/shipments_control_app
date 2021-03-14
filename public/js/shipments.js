@@ -18,7 +18,7 @@ $(function() {
       dataType: 'json',
       method: 'GET',
       success: (r) => {
-        $('#new_shipment_label').html("Nuevo despacho para " + r.name);
+        $('#new_shipment_label').html("Despacho para " + r.name);
         $('#h3_customer').html("<h3>Cliente: " + r.name + "</h3>");
       }
     });

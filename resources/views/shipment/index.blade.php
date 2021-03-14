@@ -42,9 +42,14 @@
                                         Opciones
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('shipments.download', ['shipment' => $ship->id]) }}">Descargar Retiro</a>
+                                        <a class="dropdown-item" href="{{ route('shipments.download_retire_slip', ['shipment' => $ship->id]) }}">Descargar Retiro</a>
                                         <a class="dropdown-item" href="{{ route('shipments.download', ['shipment' => $ship->id]) }}">Descargar Despacho</a>
-                                        <a class="dropdown-item" href="#">Editar</a>
+                                        <a class="dropdown-item" href="{{ route('shipments.edit', ['shipment' => $ship->id]) }}">Editar</a>
+                                        <form action="{{ route('shipment.destroy', ['shipment' => $ship->id]) }}" method="POST" class="">
+                                            @method("DELETE")
+                                            @csrf
+                                             <input class="dropdown-item" type="submit" value="Borrar">
+                                        </form>
                                     </div>
                                 </div>
 
