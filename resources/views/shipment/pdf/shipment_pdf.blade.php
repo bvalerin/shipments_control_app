@@ -403,7 +403,7 @@ border: 0;
             <td colspan="1">Cliente: </td>
             <td colspan="1">{{ $customer->name }}</td>
             <td colspan="3" rowspan="2">
-                <img src="{{ public_path('img/logo_mym1.jpg') }} ">
+                <img width="200px" height="80px" src="{{ public_path('img/logo_mym.jpeg') }} " alt="logo">
             </td>
         </tr>
 
@@ -413,15 +413,23 @@ border: 0;
         </tr>
 
         <tr>
+            <td colspan="5">
+                <h3>Datos de equipo a usar</h3>
+            </td>
+        </tr>
+
+        
+        <tr>
             <td># Contenedor: {{ $shipment->container_number }}</td>
             <td># Chasis: {{ $shipment->chasis_number }}</td>
-            <td># Placa: {{ $shipment->destination }}</td>
+            <td># Placa: {{ $shipment->container_plate }}</td>
             <td>Tamaño: {{ $shipment->container_size }}</td>
-            <td>Ejes: {{ $driver->vehicle_axle }}</td>
+            <td>Ejes: {{ $shipment->container_axle }}</td>
         </tr>
 
         <tr>
-            <td colspan="2">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Placa: {{ $shipment->vehicle_plate }}</td>
             <td colspan="1">Cédula: {{ $driver->dni }}</td>
             <td colspan="2">Teléfono: {{ $driver->phone }}</td>
         </tr>
@@ -492,13 +500,19 @@ border: 0;
             <td colspan="1">Cliente: </td>
             <td colspan="1">{{ $customer->name }}</td>
             <td colspan="3" rowspan="2">
-                <img src="{{ public_path('img/logo_mym1.jpg') }} ">
+                <img width="200px" height="80px" src="{{ public_path('img/logo_mym.jpeg') }} " alt="logo">
             </td>
         </tr>
 
         <tr>
             <td colspan="1">Origen: {{ $shipment->origin }}</td>
             <td colspan="1">Destino: {{ $shipment->destination }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">
+                <h3>Datos de equipo a usar</h3>
+            </td>
         </tr>
 
         <tr>

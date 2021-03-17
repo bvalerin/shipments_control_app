@@ -439,6 +439,11 @@ border: 0;
         </tr>
 
         <tr>
+            <td>Placa</td>
+            <td>{{ $shipment->vehicle_plate }}</td>
+        </tr>
+
+        <tr>
             <td>Cedula</td>
             <td>{{ $driver->dni }}</td>
         </tr>
