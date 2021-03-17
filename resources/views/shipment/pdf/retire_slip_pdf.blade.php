@@ -404,7 +404,7 @@ border: 0;
     <h2 class="text-center">Transportes MYM Caldera S.A</h2>
 
     <div id="logo">
-        <img width="80px" height="80px" src="{{ public_path('img/logo_mym1.jpg') }} ">
+        <img width="80px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
     </div>
     
 

@@ -95,11 +95,13 @@ class ShipmentController extends Controller{
     }
 
     public function download_retire_slip(Request $request, Shipment $shipment){
+        $logo = base64_encode(file_get_contents(public_path('img/logo_mym.jpeg')));
         $data = [
             'shipment' => $shipment,
             'customer' => $shipment->customer,
             'driver' => $shipment->driver,
-            'user' => auth()->user()
+            'user' => auth()->user(),
+            'logo' => $logo
         ];
 
         $pdf = PDF::loadView('shipment.pdf.retire_slip_pdf', $data)->setPaper('a4', 'portrait');
