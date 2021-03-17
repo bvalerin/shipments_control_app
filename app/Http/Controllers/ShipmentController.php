@@ -82,13 +82,14 @@ class ShipmentController extends Controller{
     }
 
     public function download(Request $request, Shipment $shipment){
+        $logo = base64_encode(file_get_contents(public_path('img/logo_mym.jpeg')));
         $data = [
             'shipment' => $shipment,
             'customer' => $shipment->customer,
             'driver' => $shipment->driver,
-            'user' => auth()->user()
+            'user' => auth()->user(),
+            'logo' => $logo
         ];
-
         $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a4', 'portrait');
         return $pdf->download('shipment.pdf');
     }

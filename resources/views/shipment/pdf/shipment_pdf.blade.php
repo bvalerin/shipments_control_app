@@ -403,7 +403,7 @@ border: 0;
             <td colspan="1">Cliente: </td>
             <td colspan="1">{{ $customer->name }}</td>
             <td colspan="3" rowspan="2">
-                <img width="200px" height="80px" src="{{ public_path('img/logo_mym.jpeg') }} " alt="logo">
+                <img width="200px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
             </td>
         </tr>
 
