@@ -46,10 +46,10 @@
                     <div class="col-md-6">
                         <label for="name">Origen</label>
                         <input
-                        class="form-control @error('origin') is-invalid @enderror" 
-                        id="name" 
-                        type="text" 
-                        name="origin" 
+                        class="form-control @error('origin') is-invalid @enderror"
+                        id="name"
+                        type="text"
+                        name="origin"
                         placeholder="Origen"
                         value="{{ old('origin')?old("origin"):$shipment->origin }}">
                         @error('origin')
@@ -61,8 +61,8 @@
 
                     <div class="col-md-6">
                         <label for="email">Destino</label>
-                        <input 
-                        value="{{ old('destination')?old("destination"):$shipment->destination }}" class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" > 
+                        <input
+                        value="{{ old('destination')?old("destination"):$shipment->destination }}" class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" >
                         @error('destination')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -115,10 +115,10 @@
                         @enderror
                     </div>
 
-                    
+
 
                     <div class="col-md-2">
-                        <label for="email">Ejes</label>
+                        <label for="ejes">Ejes</label>
                         <select class="form-control @error('container_axle') is-invalid @enderror" name="container_axle" id="container_axle" >
                             <option value="2" {{ $shipment->container_axle == 2 ? 'selected' :""}}>2 ejes</option>
                             <option value="3" {{ $shipment->container_axle == 3 ? 'selected' :""}}>3 ejes</option>
@@ -205,8 +205,8 @@
                         @enderror
                     </div>
 
-                    
-                    
+
+
                 </div>
 
 

@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 #Customer routes
-Route::get('/clientes', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
+Route::get('/clientes', [App\Http\Controllers\CustomerController::class,'index'])->name('customers.index');
 Route::get('/clientes/crear', [App\Http\Controllers\CustomerController::class, 'create'])->name('customers.create');
 Route::post('/clientes', [App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 Route::get('/clientes/{customer}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Shipment extends Model{
 
+    public $timestamps = true;
+
     protected $fillable = [
         'origin',
         'destination',
@@ -25,10 +27,12 @@ class Shipment extends Model{
         'shipment_state',
         'vehicle_axle',
         'booking_number',
-        'retire_from'
+        'retire_from',
+        'created_at',
+        'updated_at'
     ];
 
-    
+
     use HasFactory;
 
     public static function validated(Request $request){
@@ -53,7 +57,7 @@ class Shipment extends Model{
                 'customer_id.exists' => 'El cliente ingresado no esta registrado',
                 'driver_id.exists' => 'El chofer ingresado no existe',
                 'origin.required'=> 'El origen es requrido',
-                'destination.required'=> 'El destino es reque0rido', 
+                'destination.required'=> 'El destino es reque0rido',
                 'shipment_date.required'=> 'La fecha de colocacion es requerida',
                 'container_number.required' => 'El numero de contenedor es requerido',
                 'container_plate.required' => 'La placa del contenedor es requerida',

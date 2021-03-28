@@ -372,7 +372,7 @@ border: 0;
     position: fixed;
     opacity: 0.1;
 
-    /** 
+    /**
         Set a position in the page for your image
         This should center it vertically
     **/
@@ -387,6 +387,30 @@ border: 0;
     z-index:  -1000;
 }
 
+.text-bottom{
+    vertical-align: text-bottom;
+}
+
+.fondo{
+   background-color:  #e4edfa;
+}
+
+#logo{
+    position: fixed;
+    top: 1px;
+    left: 580px;
+    /* bottom: 0; */
+    /* right: 500px; */
+}
+
+
+#logo1{
+    position: fixed;
+    top: 550px;
+    left: 580px;
+    /* bottom: 0; */
+    /* right: 500px; */
+}
 
     </style>
 </head>
@@ -397,34 +421,57 @@ border: 0;
 
     <h4 class="text-center">Transportes MYM Caldera S.A</h4>
 
+    <div id="logo" class="text-right">
+        <img width="200px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
+    </div>
+
+    <div id="logo1" class="text-right">
+        <img width="200px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
+    </div>
+
     <table class="table table-bordered">
 
-        <tr>
-            <td colspan="1">Cliente: </td>
-            <td colspan="1">{{ $customer->name }}</td>
-            <td colspan="3" rowspan="2">
-                <img width="200px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de cliente</strong>
+            </td>
+        </tr>
+
+        <tr class="text-left">
+            <td colspan="2">Cliente: {{ $customer->name }}</td>
+            <td colspan="2">Telefono: {{ $customer->phone }}</td>
+        </tr>
+
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de despacho</strong>
             </td>
         </tr>
 
         <tr>
             <td colspan="1">Origen: {{ $shipment->origin }}</td>
             <td colspan="1">Destino: {{ $shipment->destination }}</td>
+            <td colspan="1">Fecha colocacion: {{ date_format(date_create($shipment->shipment_date),'d-m-Y') }}</td>
         </tr>
 
-        <tr>
+        <tr class="fondo">
             <td colspan="5">
-                <h3>Datos de equipo a usar</h3>
+                <strong>Datos de equipo a usar</strong>
             </td>
         </tr>
 
-        
         <tr>
             <td># Contenedor: {{ $shipment->container_number }}</td>
             <td># Chasis: {{ $shipment->chasis_number }}</td>
             <td># Placa: {{ $shipment->container_plate }}</td>
             <td>Tamaño: {{ $shipment->container_size }}</td>
             <td>Ejes: {{ $shipment->container_axle }}</td>
+        </tr>
+
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de chofer</strong>
+            </td>
         </tr>
 
         <tr>
@@ -434,8 +481,10 @@ border: 0;
             <td colspan="2">Teléfono: {{ $driver->phone }}</td>
         </tr>
 
-        <tr>
-            <td colspan="5">Instrucciones:</td>
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Instrucciones</strong>
+            </td>
         </tr>
 
         <tr>
@@ -468,17 +517,17 @@ border: 0;
         </tr>
 
         <tr>
-            <td>
+            <td class="text-bottom">
                 __________________________________<br>
                 ACEPTACION CLIENTE
             </td>
 
-            <td>
+            <td class="text-bottom">
                 __________________________________<br>
                 CONDUCTOR
             </td>
 
-            <td>
+            <td class="text-bottom">
                 __________________________________<br>
                 DESPACHADOR <br>
                 {{ $user->name }} <br>
@@ -487,50 +536,69 @@ border: 0;
             </td>
         </tr>
 
-
-        
     </table>
 
     <br>
     <br>
-    <hr>
+    <br>
 
+    <h4 class="text-center">Transportes MYM Caldera S.A</h4>
     <table class="table table-bordered">
-        <tr>
-            <td colspan="1">Cliente: </td>
-            <td colspan="1">{{ $customer->name }}</td>
-            <td colspan="3" rowspan="2">
-                <img width="200px" height="80px" src="data:image/png;base64,{{ $logo }}" alt="logo">
+
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de cliente</strong>
+            </td>
+        </tr>
+
+        <tr class="text-left">
+            <td colspan="2">Cliente: {{ $customer->name }}</td>
+            <td colspan="2">Telefono: {{ $customer->phone }}</td>
+        </tr>
+
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de despacho</strong>
             </td>
         </tr>
 
         <tr>
             <td colspan="1">Origen: {{ $shipment->origin }}</td>
             <td colspan="1">Destino: {{ $shipment->destination }}</td>
+            <td colspan="1">Fecha colocacion: {{ date_format(date_create($shipment->shipment_date),'d-m-Y') }}</td>
         </tr>
 
-        <tr>
+        <tr class="fondo">
             <td colspan="5">
-                <h3>Datos de equipo a usar</h3>
+                <strong>Datos de equipo a usar</strong>
             </td>
         </tr>
 
         <tr>
             <td># Contenedor: {{ $shipment->container_number }}</td>
             <td># Chasis: {{ $shipment->chasis_number }}</td>
-            <td># Placa: {{ $shipment->destination }}</td>
+            <td># Placa: {{ $shipment->container_plate }}</td>
             <td>Tamaño: {{ $shipment->container_size }}</td>
-            <td>Ejes: {{ $driver->vehicle_axle }}</td>
+            <td>Ejes: {{ $shipment->container_axle }}</td>
+        </tr>
+
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Datos de chofer</strong>
+            </td>
         </tr>
 
         <tr>
-            <td colspan="2">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Chofer: {{ $driver->name }}</td>
+            <td colspan="1">Placa: {{ $shipment->vehicle_plate }}</td>
             <td colspan="1">Cédula: {{ $driver->dni }}</td>
             <td colspan="2">Teléfono: {{ $driver->phone }}</td>
         </tr>
 
-        <tr>
-            <td colspan="5">Instrucciones:</td>
+        <tr class="fondo">
+            <td colspan="5">
+                <strong>Instrucciones</strong>
+            </td>
         </tr>
 
         <tr>
@@ -563,18 +631,18 @@ border: 0;
         </tr>
 
         <tr>
-            <td>
+            <td class="text-bottom">
                 __________________________________<br>
                 ACEPTACION CLIENTE
             </td>
 
-            <td>
+            <td class="text-bottom">
                 __________________________________<br>
                 CONDUCTOR
             </td>
 
-            <td>
-            __________________________________<br>
+            <td class="text-bottom">
+                __________________________________<br>
                 DESPACHADOR <br>
                 {{ $user->name }} <br>
                 {{ $user->phone }} <br>
@@ -582,9 +650,10 @@ border: 0;
             </td>
         </tr>
 
-
-        
     </table>
-    
+
+
+
+
 </body>
 </html>

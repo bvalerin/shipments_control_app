@@ -17,14 +17,14 @@ class ShipmentController extends Controller{
     }
 
     public function index(){
-        
+
         // $users = DB::table('users')
         //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
         //     ->join('orders', 'users.id', '=', 'orders.user_id')
         //     ->select('users.*', 'contacts.phone', 'orders.price')
         //     ->get();
-            
-        $shipments = Shipment::orderBy('shipment_date', 'DESC')->paginate(6);
+
+        $shipments = Shipment::orderBy('created_at', 'DESC')->paginate(6);
         return view('shipment.index', compact('shipments'));
     }
 
@@ -36,7 +36,6 @@ class ShipmentController extends Controller{
 
     public function store(Request $request){
         $data =  Shipment::validated($request);
-
         $data['user_id'] = auth()->id();
         $result  = Shipment::insert($data);
         return redirect()->route('shipments.index')->with('msj', 'Despacho se creo con exito.');
@@ -91,7 +90,7 @@ class ShipmentController extends Controller{
             'logo' => $logo
         ];
         $pdf = PDF::loadView('shipment.pdf.shipment_pdf', $data)->setPaper('a4', 'portrait');
-        return $pdf->download('shipment.pdf');
+        return $pdf->download('despacho_numero_' .  $shipment->id . '.pdf');
     }
 
     public function download_retire_slip(Request $request, Shipment $shipment){
@@ -105,9 +104,9 @@ class ShipmentController extends Controller{
         ];
 
         $pdf = PDF::loadView('shipment.pdf.retire_slip_pdf', $data)->setPaper('a4', 'portrait');
-        return $pdf->download('shipment.pdf');
+        return $pdf->download('boleta_retiro_despacho_numero_' .  $shipment->id . '.pdf');
     }
 
-    
+
 
 }

@@ -46,10 +46,10 @@
                     <div class="col-md-6">
                         <label for="name">Origen</label>
                         <input
-                        class="form-control @error('origin') is-invalid @enderror" 
-                        id="name" 
-                        type="text" 
-                        name="origin" 
+                        class="form-control @error('origin') is-invalid @enderror"
+                        id="name"
+                        type="text"
+                        name="origin"
                         placeholder="Origen"
                         value="{{ old('origin') }}">
                         @error('origin')
@@ -61,7 +61,7 @@
 
                     <div class="col-md-6">
                         <label for="email">Destino</label>
-                        <input value="{{ old('destination') }}" class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" > 
+                        <input value="{{ old('destination') }}" class="form-control @error('destination') is-invalid @enderror" id="destination" type="text" name="destination" placeholder="Destino" >
                         @error('destination')
                             <span class="invalid-feedback d-block"  role="alert">
                                 <strong> {{ $message }} </strong>
@@ -75,7 +75,7 @@
                 <h3>Datos de equipo a usar</h3>
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Numero de contenedor</label>
+                        <label># de contenedor</label>
                         <input value="{{ old("container_number") }}" name="container_number" id="container_number" placeholder="Numero de contenedor" class="form-control @error('container_number') is-invalid @enderror" />
                         @error('container_number')
                         <span class="invalid-feedback d-block"  role="alert">
@@ -84,8 +84,8 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
-                        <label>Numero de Chasis</label>
+                    <div class="col-md-2">
+                        <label># de Chasis</label>
                         <input value="{{ old("chasis_number") }}" name="chasis_number" id="chasis_number" placeholder="Numero de Chasis" class="form-control @error('chasis_number') is-invalid @enderror" />
                         @error('chasis_number')
                         <span class="invalid-feedback d-block"  role="alert">
@@ -94,8 +94,8 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
-                        <label>Numero de placa</label>
+                    <div class="col-md-2">
+                        <label># de placa</label>
                         <input value="{{ old("container_plate") }}" name="container_plate" id="container_plate" placeholder="Numero de placa" class="form-control @error('container_plate') is-invalid @enderror" />
                         @error('container_plate')
                             <span class="invalid-feedback d-block"  role="alert">
@@ -114,10 +114,10 @@
                         @enderror
                     </div>
 
-                    
 
-                    <div class="col-md-3">
-                        <label for="email">Ejes</label>
+
+                    <div class="col-md-2">
+                        <label for="ejes">Ejes</label>
 
                         <select class="form-control @error('container_axle') is-invalid @enderror" name="container_axle" id="container_axle" >
                             <option value="2" {{ old("container_axle") == 2 ? 'selected' :""}}>2 ejes</option>
@@ -205,8 +205,8 @@
                         @enderror
                     </div>
 
-                    
-                    
+
+
                 </div>
 
 

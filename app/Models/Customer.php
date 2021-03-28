@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model{
-    public $timestamps = TRUE;
+    public $timestamps = true;
     protected $fillable = [
         'name',
         'dni',
@@ -33,7 +33,7 @@ class Customer extends Model{
             ],
             [
                 'name.required'=> 'El nombre es requerido',
-                'name.min'=> 'El nombre debe tener minimo 3 caracteres', 
+                'name.min'=> 'El nombre debe tener minimo 3 caracteres',
                 'email.required'=> 'El correo es requerido',
                 'email.email' => 'El correo digitado es invalido',
                 'phone.required'=> 'El telephone es requerido',
